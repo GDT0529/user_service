@@ -7,4 +7,4 @@ EXPOSE 8083
 # ENTRYPOINT exec java $JAVA_OPTS -jar finalproject.jar
 # For Spring-Boot project, use the entrypoint below to reduce Tomcat startup time.
 #ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar finalproject.jar
-ENTRYPOINT ["java", "-jar", "app.jar", "--spring.datasource.url=jdbc:mysql://host.docker.internal:3306/user_service"]
+ENTRYPOINT exec java $JAVA_OPTS -jar finalproject.jar
