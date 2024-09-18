@@ -15,7 +15,7 @@ public class Converter {
         user.setPassword(userDTO.getPassword());
         user.setEmail(userDTO.getEmail());
         user.setRole(userDTO.getRole());
-        user.setUserId(userDTO.getUserId());
+        user.setSalary(userDTO.getSalary());
         return user;
     }
 
@@ -27,7 +27,7 @@ public class Converter {
         userDTO.setPassword(user.getPassword());
         userDTO.setEmail(user.getEmail());
         userDTO.setRole(user.getRole());
-        userDTO.setUserId(user.getUserId());
+        userDTO.setSalary(user.getSalary());
         return userDTO;
     }
 }

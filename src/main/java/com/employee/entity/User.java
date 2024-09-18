@@ -10,16 +10,15 @@ import lombok.*;
 @Entity
 @ToString
 public class User {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
-	private int userId;
 
+	@Id
 	private String username;
 	private String firstName;
 	private String lastName;
 	private String password;
 	private String email;
     private String role;
+	private Integer salary;
 
     
 }

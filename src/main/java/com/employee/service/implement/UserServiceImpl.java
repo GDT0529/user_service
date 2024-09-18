@@ -38,16 +38,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		userRepository.save(user);
 	}
 	@Override
-	public void deleteUser(int userId) {
-		User user = userRepository.findByUserId(userId);
+	public void deleteUser(String username) {
+		User user = userRepository.findByUsername(username);
 		userRepository.delete(user);
-		restTemplate.delete(RESERVATION_SERVICE+"/users/deleteUser/{userId}", userId);
+		//restTemplate.delete(RESERVATION_SERVICE+"/users/deleteUser/{username}", username);
 	}
 
 	@Override
-	public void updateUser(int userId, UserDTO userDTO) {
+	public void updateUser(String username, UserDTO userDTO) {
 	
-		Optional<User> existingUserOpt = Optional.ofNullable(userRepository.findByUserId(userId));
+		Optional<User> existingUserOpt = Optional.ofNullable(userRepository.findByUsername(username));
     
     // If the user is not found, return a "User not found" message
     if (existingUserOpt.isPresent()) {
@@ -80,8 +80,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-	public UserDTO getUser(int userId){
-		Optional<User> UserOpt = Optional.ofNullable(userRepository.findByUserId(userId));
+	public UserDTO getUser(String username) {
+		Optional<User> UserOpt = Optional.ofNullable(userRepository.findByUsername(username));
 		if (!UserOpt.isPresent()) {
 			return null;
 		}

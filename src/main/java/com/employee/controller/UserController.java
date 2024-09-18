@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -23,9 +23,9 @@ public class UserController {
 		return "healthy";
 	}
 
-	@GetMapping("/getUser/{userId}")
-	public UserDTO getUser(@PathVariable int userId) {
-		return userService.getUser(userId);
+	@GetMapping("/getUser/{username}")
+	public UserDTO getUser(@PathVariable String username) {
+		return userService.getUser(username);
 	}
 
 	@PostMapping("/addUser")
@@ -33,26 +33,11 @@ public class UserController {
 		userService.addUser(dto);
 	}
 
-	@DeleteMapping("/deleteUser/{userId}")
-	public void deleteUser(@PathVariable int userId) {
-		userService.deleteUser(userId);
+	@DeleteMapping("/deleteUser/{username}")
+	public void deleteUser(@PathVariable String username) {
+		userService.deleteUser(username);
 	}
 
-//	@GetMapping("/login")
-//	public Map<String, Object>  login(@RequestParam("username") String name, @RequestParam("password") String password) {
-//
-//		String token = null;
-//		token = userService.generateToken(name, password);
-//		Map<String, Object> response = new HashMap<>();
-//		response.put("token", token);
-//
-//		UserDTO userDTO = new UserDTO();
-//		userDTO = userService.getUserByNameAndPasswords(name, password);
-//
-//		response.put("user", userDTO);
-//
-//		return response;
-//	}
 	@GetMapping("/login")
 	public ResponseEntity<Map<String, Object>> login(@RequestParam("username") String username, @RequestParam("password") String password) {
 
@@ -83,9 +68,9 @@ public class UserController {
 		return ResponseEntity.ok(response);
 	}
 
-	@PutMapping("/updateUser/{userId}")
-	public void updateUser(@PathVariable int userId, @RequestBody UserDTO dto) {
-		userService.updateUser(userId, dto);
+	@PutMapping("/updateUser/{username}")
+	public void updateUser(@PathVariable String username, @RequestBody UserDTO dto) {
+		userService.updateUser(username, dto);
 	}
 
 }

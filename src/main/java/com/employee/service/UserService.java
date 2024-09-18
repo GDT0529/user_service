@@ -7,8 +7,8 @@ public interface UserService {
 //    UserDTO login(String name, String password);
 //    String login(String username, String password);
     String generateToken(String username, String password);
-    void deleteUser(int userId);
-    void updateUser(int userId, UserDTO userDTO);
-    UserDTO getUser(int userId);
+    void deleteUser(String username);
+    void updateUser(String username, UserDTO userDTO);
+    UserDTO getUser(String username);
     UserDTO getUserByNameAndPasswords(String username, String password);
 }
